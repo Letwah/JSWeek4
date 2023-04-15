@@ -110,3 +110,16 @@ const AglonemaPictumTricolor = new Varigation(
 );
 
 console.log(AglonemaPictumTricolor.patternInfo);
+
+///import export (use modules)
+
+//the default unnamed function
+import divide, { add, multiply } from "./utils.js";
+console.log(add(2, 3), multiply(9, 9));
+
+// import { Plant } from "./Plant.js";
+// import { housePlant } from "./housePlant.js";
+
+// class Other extends housePlant {
+//   //some work
+// }
