@@ -1,125 +1,174 @@
-///GETTERS AND SETTERS ON OBJECTS
-
-// const dog = {
-//   name: "Ronnie",
-//   breed: "border terrier",
-//   interests: ["eating", "walks"],
-//   get dogbio() {
-//     return `${this.name} is a ${this.breed} and his main interests are ${this.interests[0]}.`;
-//   },
-//   set primaryInterest(_interests) {
-//     console.log("setting primary interests");
-//     this.interests.unshift(_interests);
-//   },
-//   get primaryInterest() {
-//     return this.interests[0];
-//   },
-// };
-
-// console.log(dog.dogbio);
-// dog.primaryInterest = "barking";
-// console.log(dog.dogbio);
-
-///GETTERS AND SETTERS ON Classes
-
-// class Person {
-//   constructor(name) {
-//     this.name = name;
-//   }
-
-//   set name(value) {
-//     if (value.lenght > 30) {
-//       //add checks or validation
-//       throw new Error("Name is too long!");
-//     }
-//     this._name = value;
-//   }
-
-//   get name() {
-//     return this._name.toUpperCase();
-//   }
-// }
-
-// const Letty = new Person("Letty");
-// console.log(Letty.name);
-
-class Plant {
-  constructor(name, type, hardy) {
-    (this._name = name), (this._type = type), (this._hardy = hardy);
-  }
-  set name(name) {
-    this._name = name;
-  }
-
-  set type(type) {
-    this._type = type;
-  }
-
-  set hardy(hardy) {
-    this._hardy = hardy;
-  }
-
-  get plantInfo() {
-    return `${this._name} is a ${this._type} and is ${this._hardy} plant.`;
-  }
-}
-
-class housePlant extends Plant {
-  constructor(_name, _type, _hardy, position) {
-    super(_name, _type, _hardy);
-  }
-
-  set position(position) {
-    this._position = position;
-  }
-
-  get positionLight() {
-    return `${this._name} likes full sun`;
-  }
-}
-
-const MonsteraDeliciosa = new housePlant(
-  "Monstera Deliciosa",
-  "common houseplant",
-  "indoor",
-  "full Sun",
-  "no varigaton"
-);
-
-console.log(MonsteraDeliciosa.plantInfo);
-
-class Varigation extends housePlant {
-  constructor(_name, _type, _hardy, _position, pattern) {
-    super(_name, _type, _hardy, _position);
-  }
-  set pattern(pattern) {
-    this._pattern = pattern;
-  }
-
-  get patternInfo() {
-    return `This Variageted plant has camo patterns and is an ${this._hardy} plant`;
-  }
-}
-
-const AglonemaPictumTricolor = new Varigation(
-  (name = "Aglonema Pictum Tricolor"),
-  (type = "rare houseplant"),
-  (hardy = "indoor"),
-  (position = "partSun"),
-  (pattern = "camo varigation")
-);
-
-console.log(AglonemaPictumTricolor.patternInfo);
-
 ///import export (use modules)
 
 //the default unnamed function
-import divide, { add, multiply } from "./utils.js";
-console.log(add(2, 3), multiply(9, 9));
 
-// import { Plant } from "./Plant.js";
 // import { housePlant } from "./housePlant.js";
 
-// class Other extends housePlant {
-//   //some work
+// const MonsteraDeliciosa = new housePlant(
+//   "Monstera Deliciosa",
+//   "common houseplant",
+//   "indoor",
+//   "full Sun",
+//   "no varigaton"
+// );
+
+// console.log(MonsteraDeliciosa.plantInfo);
+
+// class Varigation extends housePlant {
+//   constructor(_name, _type, _hardy, _position, pattern) {
+//     super(_name, _type, _hardy, _position);
+//   }
+//   set pattern(pattern) {
+//     this._pattern = pattern;
+//   }
+
+//   get patternInfo() {
+//     return `This Variageted plant has camo patterns and is an ${this._hardy} plant`;
+//   }
 // }
+
+// //new keyword is new instance of
+
+// const AglonemaPictumTricolor = new Varigation(
+//   "Aglonema Pictum Tricolor",
+//   "rare houseplant",
+//   "indoor",
+//   "partSun",
+//   "camo varigation"
+// );
+
+//3. fat arrow function no return
+// console.log(
+//   typeof AglonemaPictumTricolor
+//   // AglonemaPictumTricolor.map(
+//   //   (AglonemaPictumTricolor) => AglonemaPictumTricolor.pattern
+//   // )
+// );
+
+//4. default parameter??? static method
+const add2 = (x = 0, y = 0) => x + y;
+
+console.log("hi", add2(2));
+
+// console.log(AglonemaPictumTricolor.pattern);
+
+// class Other extends housePlant {
+//   //some factor
+// }
+
+//5. create an object
+
+const dog = {
+  isHuman: false,
+  dogBio: function () {
+    console.log(`I'm ${this.name}, and I think i'm a human ${this.isHuman}`);
+  },
+};
+
+const ron = Object.create(dog);
+
+ron.name = "Ronnie";
+ron.isHuman = "false";
+
+ron.dogBio(); // returns : I'm Ronnie, and I think i'm a human false
+
+Object.defineProperty(ron, "name", {
+  value: {
+    name: "Ronnie",
+    age: "11",
+    address: {
+      town: "woodbridge",
+      country: "uk",
+      favThings: {
+        fun: "walking",
+        food: "chicken",
+        other: "barking",
+      },
+    },
+  },
+});
+
+console.log(dog);
+
+const obj = { a: 1, b: 2, c: 3 };
+
+Object.defineProperty(obj, "name", {
+  value: "Colette",
+  writable: true,
+  configurable: true,
+  enumerable: true,
+});
+
+console.log(obj);
+
+//object destructuring - level 3 from above ?????
+
+console.log(Object(obj));
+
+///9. SPREAD and REST
+
+const favFilms = [
+  "The Departed",
+  "The Usual Suspects",
+  "The Matrix",
+  "Point Break",
+  "Lost in Translation",
+];
+
+//rest ...
+
+const [item1, item2, ...allTheRest] = favFilms;
+
+console.log(item1, item2, allTheRest);
+
+const add = (...items) => {
+  console.log(items);
+};
+
+add(1, 2, 3, 4, 5, 5, 5, 5, 5, 5); //opposite of destructuring
+
+// SPREAD OPERATOR - ADDS THEM INSREAD OF CONCAT or assigning objects
+const newFavFilms = ["The Untouchables", "Memento", ...favFilms];
+
+console.log(newFavFilms);
+
+//10. send arguments to a function
+
+const filmsILike = [
+  "The Departed",
+  "The Usual Suspects",
+  "The Matrix",
+  "Point Break",
+  "Lost in Translation",
+];
+
+const [...fiveFilms] = filmsILike;
+
+console.log(...fiveFilms);
+
+const findKeanu = (arr) => {
+  arr.find((item) => {
+    if (item === "The Matrix") {
+      console.log(`i found the matrix`);
+    }
+  });
+};
+
+// REST operator???
+findKeanu(["The Marix", "Point Break"]);
+
+// 11. add a function to one of the objects, use the object method shorthand
+///???????? ASK RUSSELL ABOUT THIS
+
+// const bestFiim = function (item3) {
+//   return "Point Break";
+// };
+
+const dog2 = {
+  isHuman: false,
+  dogBio() {
+    console.log(`I'm ${this.name}, and I think i'm a human ${this.isHuman}`);
+  },
+};
+
+// console.log(???);

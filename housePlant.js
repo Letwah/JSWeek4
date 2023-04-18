@@ -1,12 +1,28 @@
-export class housePlant extends Plant {
-  #fullSun;
+import { Plant } from "./Plant.js";
 
-  constructor(kindValue, fullSun) {
-    super(kindValue);
-    this.#fullSun = fullSun;
+export class housePlant extends Plant {
+  constructor(_name, _type, _hardy, position) {
+    super(_name, _type, _hardy);
   }
 
-  get fullSun() {
-    return this.#fullSun;
+  set position(position) {
+    this._position = position;
+  }
+
+  get positionLight() {
+    return `${this._name} likes full sun`;
   }
 }
+
+// export class housePlant extends Plant {
+//   #fullSun;
+
+//   constructor(kindValue, fullSun) {
+//     super(kindValue);
+//     this.#fullSun = fullSun;
+//   }
+
+//   get fullSun() {
+//     return this.#fullSun;
+//   }
+// }

@@ -54,8 +54,17 @@ console.log(Object.keys(obj));
 
 //Object.getOwnPropertyNames(<object>);
 
+//object entries - converst the instance of objects into arrays
+//multidimentional arrays - use sparingliy
+
 const obj = { a: 1, b: 2, c: 3 };
 console.log(Object.getOwnPropertyNames(obj)); // ["a", "b", "c"]
+
+console.log(Object.entries(obj)); // returns [ [ 'a', 1 ], [ 'b', 2 ], [ 'c', 3 ] ]
+
+console.log(Object.keys(obj)); //returns [ 'a', 'b', 'c' ] keys
+
+console.log(Object.values(obj)); //returns [ 1, 2, 3 ] values
 
 //Object.fromEntries(<various>);  It's a bit like Array.from() in that it tries to create an object from something
 const formdata = new FormData(myForm);
